@@ -35,14 +35,46 @@ yarn add kepserverex-js
 
 
 ## Usage
+The package is currently comprised of two modules.
+- IotGateway: A class to read and write from the IoTGateway, REST agents that KEPServerEx provides.
+- TagBuilder: A helper class to functionally create tag array to read and write using the IoTGateway class.
 
 ```js
-const KepserverexJs = require('kepserverex-js');
+const {TagBuilder, IotGateway} = require('kepserverex-js');
 
-const kepserverexJs = new KepserverexJs();
+const tagBuilder = new TagBuilder({ namespace: 'Channel1.Device1' });
+const iotGateway = new IotGateway({
+  host: '192.168.0.1',
+  username: 'administrator',
+  password: 'superSecretPassowrd'
+});
 
-console.log(kepserverexJs.renderName());
-// script
+// Add read tags to tag builder
+// ["Channel1.Device1.TankLevel","Channel1.Device1.TankLevel"]
+const myTags = tagBuilder
+    .read('TankLevel')
+    .read('TankTemperature')
+    .get();
+
+//read tags from the iotgateway agent
+iotGateway.read(myTags).then((data)=>{
+    console.log(data);
+});
+
+//clean tags from tagsbuilder
+tagBuilder.clean();
+
+// Add write tags to builder.
+// [ {id:"Channel1.Device1.ValveOpen","v":1}, {"id":"Channel1.Device1.PumpSpeed","v":80}]
+const myTags = tagBuilder
+    .write("ValveOpen",1)
+    .write('PumpSpeed',80)
+    .get();
+
+iotGateway.write(myTags).then((data) => {
+    console.log(data);
+ });
+
 ```
 
 
@@ -58,7 +90,7 @@ console.log(kepserverexJs.renderName());
 [MIT](LICENSE) © Ryan Albrecht
 
 
-## 
+##
 
 [npm]: https://www.npmjs.com/
 

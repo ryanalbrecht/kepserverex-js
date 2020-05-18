@@ -1,7 +1,6 @@
 const test = require('ava');
 
-const IotGateway = require('../IotGateway');
-const TagBuilder = require('../TagBuilder');
+const { IotGateway, TagBuilder } = require('..');
 const SecretsLoader = require('../SecretsLoader');
 
 // require('axios-debug-log')

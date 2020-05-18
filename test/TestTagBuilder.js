@@ -1,6 +1,6 @@
 const test = require('ava');
 
-const TagBuilder = require('../TagBuilder');
+const { TagBuilder } = require('..');
 
 const tagBuilder = new TagBuilder();
 
