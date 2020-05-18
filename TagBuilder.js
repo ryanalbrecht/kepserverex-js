@@ -122,7 +122,7 @@ class TagBuilder {
    * @memberof TagBuilder
    */
   length() {
-    return Math.max(this._readTags, this._writeTags);
+    return Math.max(this._readTags.length, this._writeTags.length);
   }
 
 
