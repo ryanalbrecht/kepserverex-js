@@ -7,6 +7,8 @@ class TagBuilder {
   constructor(config) {
     config = { ...config };
     this._namespace = config.namespace || '';
+    //add trailing fullstop if not empty
+    this._namespace += !!this._namespace ? '.' : '';
     this._readTags = [];
     this._writeTags = [];
   }
@@ -23,7 +25,7 @@ class TagBuilder {
       throw 'cannot add read tags if you have allready added write tags.';
     }
 
-    this._readTags.push(`${this._namespace}.${id}`);
+    this._readTags.push(`${this._namespace}${id}`);
 
     return this;
   }
@@ -46,7 +48,7 @@ class TagBuilder {
     }
 
     this._writeTags.push({
-      id: `${this._namespace}.${id}`,
+      id: `${this._namespace}${id}`,
       v: value
     });
 
@@ -119,8 +121,11 @@ class TagBuilder {
    */
   setNamespace(namespace) {
     this._namespace = namespace;
+    //add trailing fullstop if not empty
+    this._namespace += !!this._namespace ? '.' : '';
     return this;
   }
+
 }
 
 module.exports = TagBuilder;
