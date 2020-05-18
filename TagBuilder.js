@@ -113,6 +113,20 @@ class TagBuilder {
     throw 'No tags have been added. Please call read() or write() before calling get';
   }
 
+
+
+  /**
+   * Returns the number of tags currently added to the builder
+   *
+   * @returns The number of tags that have been added
+   * @memberof TagBuilder
+   */
+  length() {
+    return Math.max(this._readTags, this._writeTags);
+  }
+
+
+
   /**
    * Sets the name space for the tag builder
    *
