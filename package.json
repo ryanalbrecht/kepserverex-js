@@ -1,0 +1,94 @@
+{
+  "name": "kepserverex-js",
+  "description": "A library to interact with KEPServerEX",
+  "version": "1.0.0",
+  "author": "Ryan Albrecht <ryan@albrecht.co.za>",
+  "bugs": {
+    "url": "https://github.com/ryanalbrecht/kepserverex-js/issues",
+    "email": "ryan@albrecht.co.za"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "contributors": [
+    "Ryan Albrecht <ryan@albrecht.co.za>"
+  ],
+  "dependencies": {
+    "axios": "^0.19.2",
+    "axios-debug-log": "^0.7.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "ava": "latest",
+    "codecov": "latest",
+    "cross-env": "latest",
+    "eslint": "latest",
+    "eslint-config-xo-lass": "latest",
+    "fixpack": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "nyc": "latest",
+    "remark-cli": "latest",
+    "remark-preset-github": "latest",
+    "xo": "latest"
+  },
+  "engines": {
+    "node": ">=8.3"
+  },
+  "homepage": "https://github.com/ryanalbrecht/kepserverex-js",
+
+  "keywords": [
+    "OPC",
+    "iotgateway",
+    "kepserverex",
+    "kepware"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "xo --fix",
+      "git add"
+    ],
+    "*.md": [
+      "remark . -qfo",
+      "git add"
+    ],
+    "package.json": [
+      "fixpack",
+      "git add"
+    ]
+  },
+  "main": "index.js",
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "trailingComma": "none"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-github"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanalbrecht/kepserverex-js"
+  },
+  "scripts": {
+    "ava": "cross-env NODE_ENV=test DEBUG=axios ava",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "lint": "xo && remark . -qfo",
+    "nyc": "cross-env NODE_ENV=test nyc ava",
+    "test": "yarn run lint && yarn run ava",
+    "test-coverage": "yarn run lint && yarn run nyc"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "xo-lass"
+    ]
+  }
+}
