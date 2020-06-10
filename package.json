@@ -1,7 +1,7 @@
 {
   "name": "kepserverex-js",
   "description": "A library to interact with KEPServerEX",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Ryan Albrecht <ryan@albrecht.co.za>",
   "bugs": {
     "url": "https://github.com/ryanalbrecht/kepserverex-js/issues",

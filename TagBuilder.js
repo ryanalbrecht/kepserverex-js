@@ -5,7 +5,7 @@ class TagBuilder {
    * @memberof TagBuilder
    */
   constructor(config) {
-    config = { ...config };
+    config = Object.assign({}, config);
     this._namespace = config.namespace || '';
     //add trailing fullstop if not empty
     this._namespace += !!this._namespace ? '.' : '';
