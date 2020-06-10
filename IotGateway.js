@@ -2,7 +2,7 @@ const axios = require('axios');
 
 class IotGateway {
   constructor(config) {
-    config = { ...config };
+    config = Object.assign({}, config);
     this._host = config.host || '172.17.2.33';
     this._port = config.port || 80;
     this._username = config.username || 'administrator';
