@@ -16,7 +16,7 @@
     "Ryan Albrecht <ryan@albrecht.co.za>"
   ],
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "axios-debug-log": "^0.7.0"
   },
   "devDependencies": {
